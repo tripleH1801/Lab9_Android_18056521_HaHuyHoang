@@ -44,14 +44,15 @@ public class act3 extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        System.out.println("da chay den act3");
         setContentView(R.layout.activity_act3);
+
         tvName3 = findViewById(R.id.tvName3);
-        tvEmail3 = findViewById(R.id.tvEmail3);
-        tvPass3 = findViewById(R.id.tvPass3);
+        tvEmail3 = findViewById(R.id.tvEmail2);
+        tvPass3 = findViewById(R.id.tvPass2);
         tvRpPass3 = findViewById(R.id.tvRpPass3);
         tvGotoSignIn3 = findViewById(R.id.tvGotoSignIn3);
-        btnSignIn2 = findViewById(R.id.btnSignIn2);
+        btnSignIn2 = findViewById(R.id.btnRegis2);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -63,7 +64,7 @@ public class act3 extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btnSignIn2:
+            case R.id.btnRegis2:
                 String name = tvName3.getText().toString().trim();
                 String email = tvEmail3.getText().toString().trim();
                 String pass = tvPass3.getText().toString().trim();
@@ -89,6 +90,7 @@ public class act3 extends AppCompatActivity implements View.OnClickListener {
                     Toast.makeText(this, RP_PASS_FAIL, Toast.LENGTH_SHORT).show();
                     return;
                 }
+                System.out.println("da chay den day");
                 firebaseAuth.createUserWithEmailAndPassword(email, pass)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
@@ -97,14 +99,14 @@ public class act3 extends AppCompatActivity implements View.OnClickListener {
                                     userId = firebaseAuth.getCurrentUser().getUid();
                                     User user = new User(name, email, 0, 0, 0);
                                     firebaseFirestore.collection("Users")
-                                            .document(userId) //xem lai
-                                            .set(user) // xemlai
+                                            .document(userId)
+                                            .set(user)
                                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                 @Override
                                                 public void onSuccess(Void aVoid) {
                                                     Toast.makeText(act3.this, REGISTER_SUCCESS, Toast.LENGTH_SHORT).show();
                                                     Intent intent = new Intent(act3.this, act2.class);
-                                                    startActivity(intent);
+                                                    act3.this.startActivity(intent);
                                                 }
 
                                             })

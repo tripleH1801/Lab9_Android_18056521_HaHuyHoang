@@ -34,9 +34,9 @@ public class act2 extends AppCompatActivity {
         setContentView(R.layout.activity_act2);
 
         tvRegis2 = findViewById(R.id.tvRegis2);
-        tvEmail2 = findViewById(R.id.tvEmail3);
-        tvPass2 = findViewById(R.id.tvPass3);
-        btnSignIn2 = findViewById(R.id.btnSignIn2);
+        tvEmail2 = findViewById(R.id.tvEmail2);
+        tvPass2 = findViewById(R.id.tvPass2);
+        btnSignIn2 = findViewById(R.id.btnRegis2);
         Context ctx = this;
 
         intent =  getIntent();
@@ -76,7 +76,7 @@ public class act2 extends AppCompatActivity {
                                     userId = firebaseAuth.getCurrentUser().getUid();
                                     Intent intent = new Intent(act2.this, act4.class);
                                     intent.putExtra("id", userId);
-                                    startActivity(intent);
+                                    act2.this.startActivity(intent);
                                     finish();
                                 }
                             }
