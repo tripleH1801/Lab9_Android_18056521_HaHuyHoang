@@ -39,6 +39,9 @@ public class act2 extends AppCompatActivity {
         btnSignIn2 = findViewById(R.id.btnRegis2);
         Context ctx = this;
 
+        tvEmail2.setText("hahuyhoang@gmail.com");
+        tvPass2.setText("123123");
+
         intent =  getIntent();
         bundle = intent.getBundleExtra("data");
 
